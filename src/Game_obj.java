@@ -126,29 +126,6 @@ public class Game_obj {
 
 
      }
-     public class Items
-     {
-         public  Items all_items[]= new Items[42];
-         String name_items;
-         boolean used=false;
-         boolean visible=false;
-          Items(String name_items) {
-              this.name_items = name_items;
-          }
-         class Water extends Items
-         {
-             Water()
-             {
-                 super("Water");
-             }
-             public  void destroy_thirst(GamePerson ob)
-             {
-
-             }
-
-         }
-
-     }
 
      public class Navigation
      {
