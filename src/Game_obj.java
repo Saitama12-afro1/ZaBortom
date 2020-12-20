@@ -88,10 +88,6 @@ public class Game_obj {
                  size_bonuslife=5;
                  location_ship[2]=this;
              }
-             public int bonus_many()
-             {
-                 return 1;
-             }
          }
          class Capitalist extends GamePerson
          {
@@ -102,10 +98,6 @@ public class Game_obj {
                  size_bonuslife=7;
                  location_ship[1]=this;
              }
-             public int bonus_paintings()
-             {
-                 return 1;
-             }
          }
          class Ledy extends GamePerson
          {
@@ -115,10 +107,6 @@ public class Game_obj {
                  size_life=4;
                  size_bonuslife=8;
                  location_ship[0]=this;
-             }
-             public int bonus_jewelry()
-             {
-                 return 1;
              }
          }
 
