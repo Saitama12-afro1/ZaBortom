@@ -91,7 +91,7 @@ public class Server implements Runnable{
 
    serverSocket=serverChannel.socket();
 
-   InetSocketAddress address=new InetSocketAddress(port)
+   InetSocketAddress address=new InetSocketAddress(port);
            serverSocket.bind(address);
 
    selector = Selector.open();
