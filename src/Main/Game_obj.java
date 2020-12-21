@@ -6,16 +6,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game_obj {
-
+    public GamePerson [] location_ship=new GamePerson[5];
     public class GamePerson
     {
         public  String name_person;
         public int size_life;
           public int size_bonuslife;
-          public int damadge_market;
+          public int damage_marker;
           public  boolean exhaustion_raw=false;//усталость от гребли
          public  boolean exhaustion_fight=false;//усталость от битвы
-          public GamePerson [] location_ship=new GamePerson[5];
+        public  boolean thirst= false;
+        public  int damage_in_sea=1;
            public int count_items=2;
           public ArrayList<Item> [] items_person=new ArrayList[count_items];
           public String lover;
@@ -70,6 +71,7 @@ public class Game_obj {
              }
             public void ignor_damage_sea()
             {
+                damage_in_sea=0;
             }
 
          }

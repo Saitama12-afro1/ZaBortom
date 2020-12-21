@@ -9,6 +9,6 @@ public interface IUsable {
     void use(GamePerson person) throws Exception;
 
     // Метод canUse возвращает false, если использовать предмет нельзя, true в противном случае.
-    boolean canUse(GamePerson person);
+//    boolean canUse(GamePerson person);
 
 }
