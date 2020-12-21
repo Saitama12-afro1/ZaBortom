@@ -17,7 +17,7 @@ public class Client
  {
   try(Socket socket = new Socket())
   {
-   socket.connect(new InetSocketAddress("25.62.47.143",8189),20000);
+   socket.connect(new InetSocketAddress("25.62.47.143",8189),20000);// сюда надо добавить возможность ввода адреса вручную, мб ещё и порта на всякий(25.62.47.143 - адресс Никиты в хомячи)
    Scanner scanner = new Scanner(socket.getInputStream());
    while(scanner.hasNextLine())
    {
