@@ -1,19 +1,23 @@
+package Main;
+
+import Items.Item;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Game_obj {
 
-      public class GamePerson
-     {
-          public  String name_person;
-          public int size_life;
+    public class GamePerson
+    {
+        public  String name_person;
+        public int size_life;
           public int size_bonuslife;
           public int damadge_market;
           public  boolean exhaustion_raw=false;//усталость от гребли
          public  boolean exhaustion_fight=false;//усталость от битвы
           public GamePerson [] location_ship=new GamePerson[5];
            public int count_items=2;
-          public ArrayList<Items> [] items_person=new ArrayList[count_items];
+          public ArrayList<Item> [] items_person=new ArrayList[count_items];
           public String lover;
           public String enemy;
           public  int score;
@@ -31,9 +35,9 @@ public class Game_obj {
               return false;
 
           }
-          public  Items use_items()// метод для использования предмета
+          public Item use_items()// метод для использования предмета
           {
-              return  new Items("f");
+              return  new Item("f");
 
           }
           class Kid extends GamePerson
@@ -45,7 +49,7 @@ public class Game_obj {
                   size_bonuslife=9;
                   location_ship[5]=this;
               }
-              public ArrayList<Items> thievery(GamePerson name_enemy)
+              public ArrayList<Item> thievery(GamePerson name_enemy)
               {
                   Random random=new Random();
                   int i= random.nextInt(name_enemy.count_items);
@@ -88,6 +92,10 @@ public class Game_obj {
                  size_bonuslife=5;
                  location_ship[2]=this;
              }
+             public int bonus_many()
+             {
+                 return 1;
+             }
          }
          class Capitalist extends GamePerson
          {
@@ -97,6 +105,10 @@ public class Game_obj {
                  size_life=5;
                  size_bonuslife=7;
                  location_ship[1]=this;
+             }
+             public int bonus_paintings()
+             {
+                 return 1;
              }
          }
          class Ledy extends GamePerson
@@ -108,6 +120,10 @@ public class Game_obj {
                  size_bonuslife=8;
                  location_ship[0]=this;
              }
+             public int bonus_jewelry()
+             {
+                 return 1;
+             }
          }
 
 
@@ -115,9 +131,4 @@ public class Game_obj {
 
      }
 
-     public class Navigation
-     {
-         public  Navigation all_navigation[]= new Navigation[24];
-
-     }
 }

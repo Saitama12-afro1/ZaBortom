@@ -1,21 +1,25 @@
-public class Items {
-    public Items all_items[]= new Items[42];
+package Items;
+
+import Main.Game_obj;
+
+public class Item {
+    public Item all_items[]= new Item[42];
     String name_items;
     boolean used=false;
     boolean visible=false;
-    Items(String name_items) {
+    public Item(String name_items) {
         this.name_items = name_items;
     }
-    boolean visible_item(Game_obj.GamePerson ob,Items item)
+    boolean visible_item(Game_obj.GamePerson ob, Item item)
     {
         int i=0;
         while(i<30)
         {
-            if(ob.items_person[i]!=)//доделать
+            if(ob.items_person[i]!=null) {}//доделать
         }
-
+        return false;
     }
-    class Water extends Items
+    class Water extends Item
     {
         Water()
         {
@@ -27,7 +31,7 @@ public class Items {
         }
 
     }
-    class Many extends Items
+    class Many extends Item
     {
         Many(Game_obj.GamePerson ob)
         {
@@ -50,7 +54,7 @@ public class Items {
             }
         }
     }
-    class Picture_1 extends Items
+    class Picture_1 extends Item
     {
         Picture_1()
         {
@@ -68,7 +72,7 @@ public class Items {
             }
         }
     }
-    class Picture_2 extends Items
+    class Picture_2 extends Item
     {
         Picture_2()
         {
@@ -85,7 +89,7 @@ public class Items {
             }
         }
     }
-    class Jewelry extends Items//доделать, но хз как
+    class Jewelry extends Item//доделать, но хз как
     {
         Jewelry(Game_obj.GamePerson ob)
         {
