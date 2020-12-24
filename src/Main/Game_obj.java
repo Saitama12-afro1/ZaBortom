@@ -7,6 +7,16 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game_obj {
+
+    public void run() { // просто функция для тестов штук
+        try {
+            new NavigationDeck(new Ledy(), new Capitalist(), new Capitan(), new Boatswain(), new Frenchie(), new Kid());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+    }
+
     public GamePerson [] location_ship=new GamePerson[6];
     public class GamePerson {
         public String name_person;
@@ -157,5 +167,6 @@ public class Game_obj {
             return 1;
         }
     }
+
 }
 
