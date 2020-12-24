@@ -51,12 +51,12 @@ public class Navigation {
     }
 
     // флаги (Полагаю эти флаги будут читаться классом игры для наложения эффектов на игроков и изменения хода игры)
-    private boolean has_seagull; // 4 полученная за игру чайка означает конец партии
-    private boolean has_death_seagull; // отменяет одну чайку
-    private boolean thirst_for_fighting; // Накладывается ли жажда для дравшихся
-    private boolean thirst_for_swimming; // Накладывается ли жажда для грёбших
+    public  boolean has_seagull; // 4 полученная за игру чайка означает конец партии
+    public boolean has_death_seagull; // отменяет одну чайку
+    public boolean thirst_for_fighting; // Накладывается ли жажда для дравшихся
+    public boolean thirst_for_swimming; // Накладывается ли жажда для грёбших
 
-    private ArrayList<Game_obj.GamePerson> sinking_list; // Люди за бортом
+    public ArrayList<Game_obj.GamePerson> sinking_list; // Люди за бортом
     private ArrayList<Game_obj.GamePerson> thirst_list; // Люди с жаждой
 
     public ArrayList<Game_obj.GamePerson> getSinkingList() {

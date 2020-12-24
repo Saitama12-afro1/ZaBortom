@@ -1,20 +1,17 @@
 package Main;
 
-import Items.Item;
-
-import javax.swing.plaf.basic.BasicListUI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class NavigationDeck  {
     // кидает исключение, если дают неправильное кол-во игроков. Вот такой костыль
-    NavigationDeck(ArrayList<Game_obj.GamePerson> persons) throws Exception { // здесь создаются изначальные карты
+    public NavigationDeck(ArrayList<Game_obj.GamePerson> persons) throws Exception { // здесь создаются изначальные карты
         if (persons.size() != 6) {
             throw new Exception("Wrong number of persons provided");
         }
 
-        navigation_list = new ArrayList<>();
+         navigation_list = new ArrayList<>();
 
         // Предполагается порядок - Леди СНоб Капитан Боцман Черпак Шкет
         Game_obj.GamePerson ledy = persons.get(0);
@@ -40,30 +37,30 @@ public class NavigationDeck  {
         ArrayList<Game_obj.GamePerson> tcbf = new ArrayList<>(Arrays.asList(the_capitalist, capitan, boatswain, frenchie));
 
         // добавляем карты в колоду чё
-        putItem(new Navigation(capitan, frenchie, false, false, false, false));
-        putItem(new Navigation(new ArrayList<>(), new ArrayList<>(), true, false, false, false));
-        putItem(new Navigation(persons, persons, false, true, false, false));
-        putItem(new Navigation(boatswain, cf, false, true, true, false));
-        putItem(new Navigation(frenchie, tcb, true, false, false, false));
-        putItem(new Navigation(the_capitalist, cbf, false, true, true, false));
-        putItem(new Navigation(ledy, persons, false, false, false, true));
-        putItem(new Navigation(the_capitalist, lc, false, true, false, false));
-        putItem(new Navigation(boatswain, cb, false, false, true, false));
-        putItem(new Navigation(kid, lcbf, false, false, false, false));
-        putItem(new Navigation(the_capitalist, ck, true, false, true, false));
-        putItem(new Navigation(frenchie, cbk, false, false, true, false));
-        putItem(new Navigation(frenchie, lcb, false, true, false, false));
-        putItem(new Navigation(the_capitalist, tc, false, false, false, false));
-        putItem(new Navigation(persons, persons, true, true, true, false));
-        putItem(new Navigation(kid, ltcbf, false, false, true, false));
-        putItem(new Navigation(kid, tcbfk, false, true, false, false));
-        putItem(new Navigation(kid, tcbfk, true, true, true, false));
-        putItem(new Navigation(capitan, the_capitalist, false, true, true, false));
-        putItem(new Navigation(capitan, capitan, false, false, false, false));
-        putItem(new Navigation(frenchie, tcbf, false, true, true, false));
-        putItem(new Navigation(capitan, boatswain, true, true, false, false));
-        putItem(new Navigation(boatswain, kid, true, true, false, false));
-        putItem(new Navigation(boatswain, ledy, false, false, false, false));
+        putNavi(new Navigation(capitan, frenchie, false, false, false, false));
+        putNavi(new Navigation(new ArrayList<>(), new ArrayList<>(), true, false, false, false));
+        putNavi(new Navigation(persons, persons, false, true, false, false));
+        putNavi(new Navigation(boatswain, cf, false, true, true, false));
+        putNavi(new Navigation(frenchie, tcb, true, false, false, false));
+        putNavi(new Navigation(the_capitalist, cbf, false, true, true, false));
+        putNavi(new Navigation(ledy, persons, false, false, false, true));
+        putNavi(new Navigation(the_capitalist, lc, false, true, false, false));
+        putNavi(new Navigation(boatswain, cb, false, false, true, false));
+        putNavi(new Navigation(kid, lcbf, false, false, false, false));
+        putNavi(new Navigation(the_capitalist, ck, true, false, true, false));
+        putNavi(new Navigation(frenchie, cbk, false, false, true, false));
+        putNavi(new Navigation(frenchie, lcb, false, true, false, false));
+        putNavi(new Navigation(the_capitalist, tc, false, false, false, false));
+        putNavi(new Navigation(persons, persons, true, true, true, false));
+        putNavi(new Navigation(kid, ltcbf, false, false, true, false));
+        putNavi(new Navigation(kid, tcbfk, false, true, false, false));
+        putNavi(new Navigation(kid, tcbfk, true, true, true, false));
+        putNavi(new Navigation(capitan, the_capitalist, false, true, true, false));
+        putNavi(new Navigation(capitan, capitan, false, false, false, false));
+        putNavi(new Navigation(frenchie, tcbf, false, true, true, false));
+        putNavi(new Navigation(capitan, boatswain, true, true, false, false));
+        putNavi(new Navigation(boatswain, kid, true, true, false, false));
+        putNavi(new Navigation(boatswain, ledy, false, false, false, false));
 
         Collections.shuffle(navigation_list); // перемешивание
     }
@@ -72,7 +69,7 @@ public class NavigationDeck  {
         return navigation_list.remove(0);
     }
 
-    public void putItem(Navigation navigation) {
+    public void putNavi(Navigation navigation) {
         navigation_list.add(navigation);
     }
 

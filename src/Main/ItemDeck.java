@@ -5,16 +5,43 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ItemDeck {
-    ItemDeck() { // здесь создаются изначальные карты
+    ItemDeck() {
         items_list = new ArrayList<>();
-
-        // Добавление предметов в список
+        for (int i=0;i<17;i++) {
+            putItem(new Water());
+        }
+        putItem(new Bucket());
+        putItem(new Bucket());
+        putItem(new Many());
+        putItem(new Many());
+        putItem(new Many());
+        putItem(new Many());
+        putItem(new Many());
+        putItem(new Many());
+        putItem(new Jewelry());
+        putItem(new Jewelry());
+        putItem(new Jewelry());
+        putItem(new Medkit());
+        putItem(new Medkit());
+        putItem(new Medkit());
+        putItem(new Picture_1());
+        putItem(new Picture_1());
+        putItem(new Picture_2());
+        putItem(new Weapon(3,"Knife"));
+        putItem(new Weapon(4,"boathook"));
+        putItem(new Weapon(2,"baton"));
+        putItem(new Rpg());
+        putItem(new Umbrella());
+        putItem(new Paddle());
+        putItem(new Paddle());
+        putItem(new Compass());
 
         Collections.shuffle(items_list); // перемешивание
     }
 
     public Item getItem() {
         return items_list.remove(0);
+
     }
 
     public void putItem(Item item) {

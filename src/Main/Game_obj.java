@@ -1,85 +1,95 @@
 package Main;
 
 import Items.Item;
+import Items.Paddle;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Game_obj {
-
-    public void run() { // просто функция для тестов штук
-        ArrayList<GamePerson> persons = new ArrayList<>();
-
-        persons.add(new Ledy());
-        persons.add(new Capitalist());
-        persons.add(new Capitan());
-        persons.add(new Boatswain());
-        persons.add(new Frenchie());
-        persons.add(new Kid());
-        try {
-            new NavigationDeck(persons);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-
-    }
-
     public GamePerson [] location_ship=new GamePerson[6];
-    public class GamePerson
-    {
-        public  String name_person;
+    public class GamePerson {
+        public String name_person;
         public int size_life;
-          public int size_bonuslife;
-          public int damage_marker;
-          public  boolean exhaustion_raw=false;//усталость от гребли
-         public  boolean exhaustion_fight=false;//усталость от битвы
-        public  boolean thirst= false;
-        public  int damage_in_sea=1;
-           public int count_items=2;
-          public ArrayList<Item> [] items_person=new ArrayList[count_items];
-          public String lover;
-          public String enemy;
-          public  int score;
-          GamePerson(String name_person)
-          {
-             this.name_person=name_person;
-          }
-          public   boolean raw()//  метод для гребли
-          {
-              return false;
+        public int size_bonuslife;
+        public int damage_marker;
+        public boolean thirst = false;
+        public int damage_in_sea = 1;
+        public int count_items = 2;
+        boolean exhaustion_raw = false;//усталость от гребли
+        public ArrayList<Item>items_person = new ArrayList<Item>(count_items);
+        public String lover;
+        public String enemy;
+        public int score;
 
-          }
-          public boolean fight()//метод для битвы
-          {
-              return false;
-
-          }
-          public Item use_items()// метод для использования предмета
-          {
-              return  new Item("f");
-
-          }
-     }
-
-    public class Kid extends GamePerson
-    {
-        Kid()
-        {
-            super("Kid");
-            size_life=3;
-            size_bonuslife=9;
-            location_ship[5]=this;
+        GamePerson(String name_person) {
+            this.name_person = name_person;
         }
-        public ArrayList<Item> thievery(GamePerson name_enemy)
+        public void visible_item(GamePerson ob,int i)
         {
-            Random random=new Random();
-            int i= random.nextInt(name_enemy.count_items);
-            this.items_person[count_items++]=name_enemy.items_person[i];//настроить  работу с полем видимости
-            name_enemy.items_person[i].remove(i);
-            return  this.items_person[count_items];
+            ob.items_person.get(i).visible=true;
+
         }
 
+        public ArrayList <Navigation> row(GamePerson ob,NavigationDeck o)//  метод для гребли
+        {
+           ArrayList <Navigation> arr= new ArrayList<Navigation>(2);
+
+            arr.add(0,o.getNavigation());
+            arr.add(1,o.getNavigation());
+            for(int i=0, j=2;i<count_items;i++) {
+                if (ob.items_person.get(i)instanceof Paddle) {
+                    arr.add(j,o.getNavigation());
+                    j++;
+                }
+            }
+            return arr;
+        }
+        public void rpg_row(GamePerson ob,NavigationDeck o)//метод не доделан-(с)Никита
+        {
+            ArrayList <Navigation> arr= new ArrayList<Navigation>(3);
+            arr.add(0,o.getNavigation());
+            arr.add(1,o.getNavigation());
+            arr.add(2,o.getNavigation());
+            for(int i=0;i<3;i++)
+            {
+                if(arr.get(i).has_seagull)//прибавить к общему числу чаек в мэйне
+                {
+
+                }
+            }
+        }
+
+        public boolean fight()//метод для битвы
+        {
+            boolean exhaustion_fight = false;//усталость от битвы
+            return false;
+        }
+
+        public Item use_items()// метод для использования предмета
+        {
+            return new Item("f");
+        }
     }
+           public class Kid extends GamePerson
+          {
+              Kid()
+              {
+                  super("Kid");
+                  size_life=3;
+                  size_bonuslife=9;
+                  location_ship[5]=this;
+              }
+              public Item thievery(GamePerson name_enemy)
+              {
+                  Random random=new Random();
+                  int i= random.nextInt(name_enemy.count_items);
+                  this.items_person.add(name_enemy.items_person.remove(i));//настроить  работу с полем видимости
+                  return  this.items_person.get(count_items);
+              }
+              }
+
+
     public class Frenchie extends GamePerson
     {
         Frenchie()
@@ -147,5 +157,5 @@ public class Game_obj {
             return 1;
         }
     }
-
 }
+
