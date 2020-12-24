@@ -8,16 +8,8 @@ import java.util.Random;
 public class Game_obj {
 
     public void run() { // просто функция для тестов штук
-        ArrayList<GamePerson> persons = new ArrayList<>();
-
-        persons.add(new Ledy());
-        persons.add(new Capitalist());
-        persons.add(new Capitan());
-        persons.add(new Boatswain());
-        persons.add(new Frenchie());
-        persons.add(new Kid());
         try {
-            new NavigationDeck(persons);
+            new NavigationDeck(new Ledy(), new Capitalist(), new Capitan(), new Boatswain(), new Frenchie(), new Kid());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
