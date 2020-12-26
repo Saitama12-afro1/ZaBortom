@@ -7,12 +7,30 @@ import java.io.*;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameTCPConnection extends Thread {
     private final Socket socket;
     private final ObjectInputStream input;
     private final ObjectOutputStream output;
     private ArrayList<GameTCPConnectionListener> eventListeners;
+
+    // Авто-генерация классная штука, тут короче если сокеты совпадают у двух Connection, то они считаются равными
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GameTCPConnection)) return false;
+        GameTCPConnection that = (GameTCPConnection) o;
+        return socket.equals(that.socket) &&
+                input.equals(that.input) &&
+                output.equals(that.output);
+    }
+
+    // тоже авто-генерация, вряд ли пригодится, но вроде вместе с equals нужно перегружать и этот метод
+    @Override
+    public int hashCode() {
+        return Objects.hash(socket, input, output);
+    }
 
     // Конструктор копирования, чё. Новый объект ссылается на те же поля
     public GameTCPConnection(GameTCPConnection tcpConnection) {
